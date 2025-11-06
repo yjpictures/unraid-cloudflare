@@ -13,8 +13,8 @@ jobs:
         run: |
           VERSION=${GITHUB_REF#refs/tags/}
           echo "VERSION=$VERSION" >> $GITHUB_ENV
-          echo "REPO_URL=${{ github.GITHUB_SERVER_URL }}/${{ github.GITHUB_REPOSITORY }}" >> $GITHUB_ENV
-          echo "SUPPORT_URL=${{ github.GITHUB_SERVER_URL }}/${{ github.GITHUB_REPOSITORY }}/issues" >> $GITHUB_ENV
+          echo "REPO_URL=${{ github.server_url }}/${{ github.repository }}" >> $GITHUB_ENV
+          echo "SUPPORT_URL=${{ github.server_url }}/${{ github.repository }}/issues" >> $GITHUB_ENV
 
       - name: Prepare build folder
         run: |
