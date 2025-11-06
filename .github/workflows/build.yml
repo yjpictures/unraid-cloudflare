@@ -23,7 +23,7 @@ jobs:
 
       - name: Generate .plg file
         run: |
-          envsubst < plugin.xml.template > build/cloudflared.plg
+          envsubst < plugin.xml > build/cloudflared.plg
 
       - name: Upload the plugin
         uses: actions/upload-artifact@v4
