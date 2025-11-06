@@ -1,0 +1,10 @@
+<PLUGIN name="Cloudflared" author="Yash Jain" version="{{VERSION}}" pluginURL="{{REPO_URL}}" support="{{SUPPORT_URL}}">
+    <DESCRIPTION>Cloudflare Tunnel plugin for Unraid (auto-start, start/stop, token management)</DESCRIPTION>
+
+    <FILE Name="/usr/local/emhttp/plugins/cloudflared/install.sh" Mode="0755" />
+    <FILE Name="/usr/local/emhttp/plugins/cloudflared/rc.cloudflared" Mode="0755">
+    <FILE Name="/usr/local/emhttp/plugins/cloudflared/remove.sh" Mode="0755" />
+    <FILE Name="/usr/local/emhttp/plugins/cloudflared/cloudflared.page" Mode="0644" />
+    <FILE Name="/usr/local/emhttp/plugins/cloudflared/cloudflared.php" Mode="0644" />
+    <FILE Name="/usr/local/emhttp/plugins/cloudflared/cloudflared.png" Mode="0644" />
+</PLUGIN>

@@ -1,0 +1,33 @@
+name: Build Unraid Plugin
+
+on:
+  push:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set variables
+        run: |
+          VERSION=${GITHUB_REF#refs/tags/}
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+          echo "REPO_URL=${{ github.GITHUB_SERVER_URL }}/${{ github.GITHUB_REPOSITORY }}" >> $GITHUB_ENV
+          echo "SUPPORT_URL=${{ github.GITHUB_SERVER_URL }}/${{ github.GITHUB_REPOSITORY }}/issues" >> $GITHUB_ENV
+
+      - name: Prepare build folder
+        run: |
+          mkdir -p build
+          cp -r src/* build/
+
+      - name: Generate .plg file
+        run: |
+          envsubst < plugin.xml.template > build/cloudflared.plg
+
+      - name: Upload the plugin
+        uses: actions/upload-artifact@v4
+        with:
+          name: unraid plugin
+          path: |
+            build/cloudflared.plg
