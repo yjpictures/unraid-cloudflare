@@ -11,7 +11,11 @@ jobs:
 
       - name: Set variables
         run: |
-          VERSION=${GITHUB_REF#refs/tags/}
+          if [[ "${{ github.ref_type }}" == "tag" ]]; then
+            VERSION=${{ github.ref_name }}
+          else
+            VERSION=0.1.0
+          fi
           echo "VERSION=$VERSION" >> $GITHUB_ENV
           echo "REPO_URL=${{ github.server_url }}/${{ github.repository }}" >> $GITHUB_ENV
           echo "SUPPORT_URL=${{ github.server_url }}/${{ github.repository }}/issues" >> $GITHUB_ENV
